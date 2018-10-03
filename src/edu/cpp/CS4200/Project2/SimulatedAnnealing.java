@@ -23,7 +23,7 @@ public class SimulatedAnnealing {
         while(temp >= threshold){
             //get a child
             //TODO prevent child from pointing to board
-            
+
             int column = RandomGenerator.generate(GameBoard.N);
             int currentRow = board.board[column];
             int r = currentRow;
