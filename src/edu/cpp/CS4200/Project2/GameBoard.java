@@ -1,12 +1,17 @@
 package edu.cpp.CS4200.Project2;
 
 public class GameBoard {
-    static final int N = 8;
+    static final int N = 21;
     int[] board = new int[N];
+    public double fitnessScore;
     GameBoard(){
         for(int i = 0; i < N; i++){
             board[i] = RandomGenerator.generate(N);
         }
+    }
+
+    GameBoard(int[] input) {
+        board = input;
     }
 
     public int calculatePairs(){
@@ -34,9 +39,11 @@ public class GameBoard {
         return h;
     }
 
-    public static GameBoard move(int column, int r, GameBoard b) {
-        //TODO check this for accuracy
-        b.board[column] = r;
-        return b;
+    public void fitnessFunc() {
+        //this allows for the fitness function to be increasing with a better score.
+        //best possible score is 1
+        int n = calculatePairs();
+        fitnessScore = 1 / (1 + n);
     }
+
 }
