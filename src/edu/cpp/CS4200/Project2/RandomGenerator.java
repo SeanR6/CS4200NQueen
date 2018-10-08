@@ -9,5 +9,6 @@ public class RandomGenerator {
 
     public static double generate(){
         return ThreadLocalRandom.current().nextDouble();
+
     }
 }

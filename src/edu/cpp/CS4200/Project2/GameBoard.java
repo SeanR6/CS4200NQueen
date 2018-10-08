@@ -3,15 +3,17 @@ package edu.cpp.CS4200.Project2;
 public class GameBoard {
     static final int N = 21;
     int[] board = new int[N];
-    public double fitnessScore;
+    int pairs;
     GameBoard(){
         for(int i = 0; i < N; i++){
             board[i] = RandomGenerator.generate(N);
         }
+        pairs = calculatePairs();
     }
 
     GameBoard(int[] input) {
         board = input;
+        pairs = calculatePairs();
     }
 
     public int calculatePairs(){
@@ -39,11 +41,5 @@ public class GameBoard {
         return h;
     }
 
-    public void fitnessFunc() {
-        //this allows for the fitness function to be increasing with a better score.
-        //best possible score is 1
-        int n = calculatePairs();
-        fitnessScore = 1 / (1 + n);
-    }
 
 }

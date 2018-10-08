@@ -34,7 +34,7 @@ public class SimulatedAnnealing {
             searchCost++;
             //if delta score is positive
             //let that be the child
-            //if cost is 0 stop
+            //if cost is 0 (no attacking queens) stop
             deltaScore = scoreDiff(board.calculatePairs(), childBoard.calculatePairs());
             if (!calculatedList.contains(childBoard)) {
                 calculatedList.add(childBoard);
