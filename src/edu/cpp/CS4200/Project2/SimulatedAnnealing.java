@@ -6,7 +6,7 @@ import java.util.List;
 public class SimulatedAnnealing {
     public static ReturnStructure solve(GameBoard board){
         //try this value, may need to get a better number later
-        double temp = 100;
+        double temp = 500;
         int[] child;
         //used to keep track of nodes calculated that turn, is emptied once a child has been chosen
         List<GameBoard> calculatedList = new LinkedList<>();
@@ -65,6 +65,9 @@ public class SimulatedAnnealing {
 
         //print solution
         UI.printBoard(board);
+        if (board.calculatePairs() == 0) {
+            isSolved = true;
+        }
         //return search cost and whether or not it is solved
         return new ReturnStructure(isSolved, searchCost);
     }

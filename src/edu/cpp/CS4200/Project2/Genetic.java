@@ -2,23 +2,24 @@ package edu.cpp.CS4200.Project2;
 
 public class Genetic {
     static final int N = GameBoard.N;
-    static int populationSize = 500;
+    static int populationSize = 150;
 
     public static ReturnStructure solve() {
         Population p = new Population();
         Population newPop;
-        int maxIterations = 2000;
-        double mutationChance = .6;
-        double doubleMutationChance = .4;
-        int elites = 4;
+        int maxIterations = 5000;
+        double mutationChance = .4;
+        double doubleMutationChance = .05;
+        int elites = (int) (populationSize * .30);
+        int searchCost = 0;
         //create population.size random boards
         for (int i = 0; i < Population.size; i++) {
             p.p.add(new GameBoard());
+            searchCost++;
         }
         //sort them by fitness
 
 
-        //TODO ADD LOOP HERE
         for (int iterations = 0; iterations < maxIterations; iterations++) {
             newPop = new Population();
 
@@ -86,6 +87,7 @@ public class Genetic {
                     //add child to the population
                     GameBoard child = new GameBoard(childBoard);
                     newPop.p.add(child);
+                    searchCost++;
                 }
 
                 i++;
@@ -96,6 +98,6 @@ public class Genetic {
         //for every new individual that is created there is a chance of mutation
 
         UI.printBoard(p.p.peek());
-        return new ReturnStructure(false, 0);
+        return new ReturnStructure(false, searchCost);
     }
 }
